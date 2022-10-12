@@ -10,12 +10,13 @@ public class MoneyTransferPage {
     private SelenideElement fromField = $("[data-test-id=from] input");
     private SelenideElement transferButton = $("[data-test-id=action-transfer]");
 
-   /* public VerificationPage transferMoney(DataHelper.Balance info) {
-        amountField.setValue(info.getCardNumber());
-        fromField.setValue(info.getAmount());
-        transferButton.click();
-        return new VerificationPage();
+    public int setAmount(int amount){
+        return amount;
     }
-    */
+    public DashboardPage transferMoney(DataHelper.TransferCard info) {
+        amountField.setValue(setAmount);
+        transferButton.click(info.getCardNumber());
+        return new DashboardPage();
+    }
 
 }

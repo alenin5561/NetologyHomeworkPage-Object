@@ -36,6 +36,19 @@ public class TestMoneyTrasfer {
         System.out.println(dashboardPage.getCardBalance((cards.get(1))));
     }
 
+    @Test
+    void shouldTransferMoneyFromCards() {
+        open("http://localhost:9999");
+        var loginPage = new LoginPage();
+//    var loginPage = open("http://localhost:9999", LoginPageV2.class);
+        var authInfo = DataHelper.getAuthInfo();
+        var verificationPage = loginPage.validLogin(authInfo);
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        var moneyTransferPage = new MoneyTransferPage();
+     //   var transferInfo = D
+
+
+    }
 
 }
 

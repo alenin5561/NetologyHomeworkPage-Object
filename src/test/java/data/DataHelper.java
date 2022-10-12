@@ -30,12 +30,12 @@ public class DataHelper {
     }
 
     @Value
-    public static class Balance{
-        private long cardNumber;
-        private int amount;
+    public static class TransferCard{
+        private String cardNumber;
     }
 
-    public static Balance getBalanceInfo(Balance balanceInfo) {
-        return new Balance(5559000000000002L, 1000 );
+    public static TransferCard getBalanceInfo(TransferCard transferCardInfo) {
+
+        return new TransferCard("5559000000000002");
     }
 }
