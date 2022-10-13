@@ -34,7 +34,7 @@ public class DataHelper {
         private String cardNumber;
     }
 
-    public static TransferCard getBalanceInfo(TransferCard transferCardInfo) {
+    public static TransferCard getCardInfo() {
 
         return new TransferCard("5559000000000002");
     }

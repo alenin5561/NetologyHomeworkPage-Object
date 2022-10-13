@@ -44,9 +44,10 @@ public class TestMoneyTrasfer {
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        var dashboardPage = verificationPage.validVerify((verificationCode));
+        dashboardPage.addMoneyToCard("92df3f1c-a033-48e6-8390-206f6b1f56c0");
         var moneyTransferPage = new MoneyTransferPage();
-     //   var transferInfo = D
-
+        var transferInfo = DataHelper.getCardInfo();
 
     }
 
