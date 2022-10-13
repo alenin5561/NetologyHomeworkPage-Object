@@ -6,19 +6,12 @@ import data.DataHelper;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MoneyTransferPage {
-
-    private SelenideElement amountField = $("[data-test-id=amount] input");
-    private SelenideElement fromField = $("[data-test-id=from] input");
-    private SelenideElement transferButton = $("[data-test-id=action-transfer]");
-
-    public String setAmount(String amount) {
-        return amount;
-    }
-
     public DashboardPage transferMoney(DataHelper.TransferCard info) {
-        amountField.setValue(setAmount("2000"));
-        fromField.setValue(info.getCardNumber());
-        transferButton.click();
+
+    $("[data-test-id=amount]").setValue("2000");
+    $("[data-test-id=from] input").setValue(info.getCardNumber());
+    $("[data-test-id=action-transfer]").click();
+
         return new DashboardPage();
     }
 }
