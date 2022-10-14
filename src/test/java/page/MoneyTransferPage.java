@@ -13,5 +13,13 @@ public class MoneyTransferPage {
     $("[data-test-id=action-transfer]").click();
         return new DashboardPage();
     }
+
+    public DashboardPage transferMaxMoney(DataHelper.TransferCard info) {
+
+        $("[data-test-id=amount] input").setValue("50000");
+        $("[data-test-id=from] input").setValue(info.getCardNumber());
+        $("[data-test-id=action-transfer]").click();
+        return new DashboardPage();
+    }
 }
 
