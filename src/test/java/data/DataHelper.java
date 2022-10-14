@@ -39,4 +39,9 @@ public class DataHelper {
         return new TransferCard("5559000000000002");
     }
 
+    public static TransferCard getNewCardInfo() {
+
+        return new TransferCard("5559000000000001");
+    }
+
 }

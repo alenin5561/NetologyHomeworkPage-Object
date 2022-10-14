@@ -8,10 +8,9 @@ import static com.codeborne.selenide.Selenide.$;
 public class MoneyTransferPage {
     public DashboardPage transferMoney(DataHelper.TransferCard info) {
 
-    $("[data-test-id=amount]").setValue("2000");
+    $("[data-test-id=amount] input").setValue("10000");
     $("[data-test-id=from] input").setValue(info.getCardNumber());
     $("[data-test-id=action-transfer]").click();
-
         return new DashboardPage();
     }
 }

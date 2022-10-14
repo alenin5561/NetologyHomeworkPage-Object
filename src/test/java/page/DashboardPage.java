@@ -36,7 +36,7 @@ public class DashboardPage {
     }
 
     public void addMoneyToCard(String cardId){
-        $(String.format("div[data-test-id='%s']",cardId)).click();
+        $(String.format("div[data-test-id='%s']",cardId)).$("button").click();
     }
 
 
