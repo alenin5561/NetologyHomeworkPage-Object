@@ -2,43 +2,43 @@ package page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import lombok.val;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
-    private SelenideElement heading = $("[data-test-id=dashboard]");
+    private final ElementsCollection cards = $$(".list__item div");
+    private final String balanceStart = "баланс: ";
+    private final String balanceFinish = " р.";
+
+    private final SelenideElement heading = $("[data-test-id=dashboard]");
+
 
     public DashboardPage() {
         heading.shouldBe(visible);
     }
 
-    public List<String> getCards() {
-        //    return $$("ul li[class=list__item] div")
-        //           .stream().map(it -> it.getAttribute("data-test-id"))
-        //                          .collect(Collectors.toList());
-        //        }
-        ElementsCollection cardElements = $$("ul li[class=list__item] div");
-        List<String> cards = new ArrayList<>();
 
-        for (SelenideElement card : cardElements) {
-            cards.add(card.getAttribute("data-test-id"));
-        }
-        return cards;
+    public String getFirstCardBalance() {
+        return $("div[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']").getOwnText();
     }
 
-    public String getCardBalance(String cardId){
-       return  $(String.format("div[data-test-id='%s']",cardId)).getOwnText();
+    public String getSecondCardBalance() {
+        return $("div[data-test-id='0f3f5c2a-249e-4c3d-8287-09f7a039391d']").getOwnText();
     }
 
-    public void addMoneyToCard(String cardId){
-        $(String.format("div[data-test-id='%s']",cardId)).$("button").click();
+    public void addMoneyToFirstCard() {
+        $("div[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']").$("button").click();
     }
 
+    public void addMoneyToSecondCard() {
+        $("div[data-test-id='0f3f5c2a-249e-4c3d-8287-09f7a039391d']").$("button").click();
+    }
 
 
 }
