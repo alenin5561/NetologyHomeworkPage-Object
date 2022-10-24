@@ -24,14 +24,20 @@ public class DashboardPage {
     }
 
 
-    public String getFirstCardBalance() {
-        return $("div[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']").getOwnText();
+    public int getFirstCardBalance() {
+        return extractBalance(cards.first().text());
     }
 
-    public String getSecondCardBalance() {
-        return $("div[data-test-id='0f3f5c2a-249e-4c3d-8287-09f7a039391d']").getOwnText();
+    public int getSecondCardBalance() {
+        return extractBalance(cards.last().text());
     }
 
+    private int extractBalance(String text) {
+        val start = text.indexOf(balanceStart);
+        val finish = text.indexOf(balanceFinish);
+        val value = text.substring(start + balanceStart.length(), finish);
+        return Integer.parseInt(value);
+    }
     public void addMoneyToFirstCard() {
         $("div[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']").$("button").click();
     }
