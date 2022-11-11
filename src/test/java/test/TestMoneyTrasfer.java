@@ -31,8 +31,8 @@ public class TestMoneyTrasfer {
         var transferPage = moneyTransferPage.transferMoney(transferInfo, String.valueOf(amount));
         var firstCardBalance = dashboardPage.getFirstCardBalance();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
-        var expectedFirstCardBalance = firstCardBalance - amount;
-        var expectedSecondCardBalance = secondCardBalance + amount;
+        var expectedFirstCardBalance = firstCardBalance + amount;
+        var expectedSecondCardBalance = secondCardBalance - amount;
         var actualFirstCardBalance = dashboardPage.getFirstCardBalance();
         var actualSecondCardBalance = dashboardPage.getSecondCardBalance();
         Assertions.assertEquals(expectedFirstCardBalance, actualFirstCardBalance);
@@ -47,9 +47,9 @@ public class TestMoneyTrasfer {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         var dashboardPage = verificationPage.validVerify((verificationCode));
-        dashboardPage.addMoneyToFirstCard();
+        dashboardPage.addMoneyToSecondCard();
         var moneyTransferPage = new MoneyTransferPage();
-        var transferInfo = DataHelper.getCardInfo();
+        var transferInfo = DataHelper.getNewCardInfo();
         var amount = 1000;
         var transferPage = moneyTransferPage.transferMoney(transferInfo, String.valueOf(amount));
         var firstCardBalance = dashboardPage.getFirstCardBalance();
