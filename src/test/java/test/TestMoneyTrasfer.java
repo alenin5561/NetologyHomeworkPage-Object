@@ -13,7 +13,6 @@ public class TestMoneyTrasfer {
 
     @AfterEach
     void tearsDown() {
-        ;
     }
 
     @Test
