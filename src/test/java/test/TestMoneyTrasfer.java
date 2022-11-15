@@ -11,10 +11,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TestMoneyTrasfer {
 
-    @AfterEach
-    void tearsDown() {
-    }
-
     @Test
     void shouldTransferMoneyFromCard1() {
         open("http://localhost:9999");
@@ -23,13 +19,13 @@ public class TestMoneyTrasfer {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         var dashboardPage = verificationPage.validVerify((verificationCode));
+        var firstCardBalance = dashboardPage.getFirstCardBalance();
+        var secondCardBalance = dashboardPage.getSecondCardBalance();
         dashboardPage.addMoneyToFirstCard();
         var moneyTransferPage = new MoneyTransferPage();
         var transferInfo = DataHelper.getCardInfo();
         var amount = 1000;
         var transferPage = moneyTransferPage.transferMoney(transferInfo, String.valueOf(amount));
-        var firstCardBalance = dashboardPage.getFirstCardBalance();
-        var secondCardBalance = dashboardPage.getSecondCardBalance();
         var expectedFirstCardBalance = firstCardBalance + amount;
         var expectedSecondCardBalance = secondCardBalance - amount;
         var actualFirstCardBalance = dashboardPage.getFirstCardBalance();
@@ -46,13 +42,13 @@ public class TestMoneyTrasfer {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         var dashboardPage = verificationPage.validVerify((verificationCode));
+        var firstCardBalance = dashboardPage.getFirstCardBalance();
+        var secondCardBalance = dashboardPage.getSecondCardBalance();
         dashboardPage.addMoneyToSecondCard();
         var moneyTransferPage = new MoneyTransferPage();
         var transferInfo = DataHelper.getNewCardInfo();
         var amount = 1000;
         var transferPage = moneyTransferPage.transferMoney(transferInfo, String.valueOf(amount));
-        var firstCardBalance = dashboardPage.getFirstCardBalance();
-        var secondCardBalance = dashboardPage.getSecondCardBalance();
         var expectedFirstCardBalance = firstCardBalance - amount;
         var expectedSecondCardBalance = secondCardBalance + amount;
         var actualFirstCardBalance = dashboardPage.getFirstCardBalance();
